@@ -1,0 +1,34 @@
+_______________________
+
+"Natural intelligence cannot be replaced by artificial intelligence." or can it?
+
+Czechitas Digital academy, spring 2023
+
+Article in CZ: https://medium.com/@michaela.kriklanova/p%C5%99irozenou-inteligenci-nelze-nahradit-um%C4%9Blou-nebo-ano-8b6157e2aa98
+
+_______________________
+
+All codes can be run in Python and SQL. For the most accessible transformation, we used Keboola flow. The following flowchart shows the order in which we converted the tables in the Keboola flow. Some steps involve using Tableau or Google Sheets, but they can be performed in other tools or programs.
+
+To create the dataset we used the Apify tool and its predefined actor Twitter Latest Tweets Scraper, where we searched for the term artificial intelligence in Czech. In the actor, we set a maximum of 3300 tweets per item. We got a dataset with data from September 2008 to April 2023.
+
+We took the following steps to convert the data into the results we wanted to achieve:
+
+1. The first step was to limit the dataset to the last 2 years and divide it into 4 different tables for different purposes using the following codes.
+ 
+2. The dataset (AI) was divided into 4 tables: Hashtags 2021-2023, Mentions, Core_table2, Tweet_texts(Python2).
+
+3. The Mentions table was eventually not used in the project.
+
+4. Hashtags from the table Hashtags 2021-2023 were grouped using the following code (Grouped hashtags 2021-2023).
+
+5. Data from Tweet_texts(Python2) was cleared of links, emojis and ads and translated into English (Text cleaning, Text without emojis, Text without links) using AWS Comprehend. AWS also evaluated the sentiment and key phrases of the tweets themselves. Results were connected to Core_table2 (Connecting). 
+
+6. Tweet_texts(Python2) table was also used to evaluate sentiment using ChatGPT (ChatGPT prompt), transformed to a similar scoring method as AWS (ChatGPT1), and connected to Core_table2 (ChatGPT results and user names). 
+
+7. We used Tableau calculated field to add a new column to the table “ChatGPT results and user names table” to unify the evaluation results of both systems (chatgpt_with_sentiment2).
+
+8. The AWS results table was prepared for comparison (AWS new), connected to ChatGPT table (GPT+AWS2) and compared (Comparison).
+
+In the flowchart you can also find the number of the dashboard where we used given data. The link to Tableau Public is as follows https://public.tableau.com/app/profile/svetlana.mitrofanova/viz/Pirozenouinteligencinelzenahraditumlouneboano_16853059375660/Pirozenouinteligencinelzenahraditumlouneboano
+

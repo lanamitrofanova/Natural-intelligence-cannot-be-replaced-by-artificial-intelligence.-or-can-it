@@ -1,0 +1,1 @@
+=GPT(“analyze sentiment of the following text in terms of its position on artificial intelligence and its impact and use in today’s society. Provide the probabilities of the text expressing an overall positive or negative sentiment. In a form: Positive: int%, Negative: int%”, B181)

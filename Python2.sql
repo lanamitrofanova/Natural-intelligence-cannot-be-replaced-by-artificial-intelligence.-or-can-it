@@ -1,0 +1,6 @@
+CREATE OR REPLACE TABLE "Python2" AS
+SELECT 
+   "id", "full_text"
+FROM AI
+WHERE CAST("created_at" AS DATE) BETWEEN '2021-04-01' AND '2023-03-31'
+;

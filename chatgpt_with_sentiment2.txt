@@ -1,0 +1,9 @@
+Sentiment calculation in Tableau for "ChatGPT results and user names"
+
+INT(if [Positive] >50 then '+100'
+ELSEIF [Positive] =50 and [Negative] =50 then '0' 
+ELSEIF [Positive] <50 and [Positive] >0 then '-100'
+ELSEIF [Positive] =0 and [Negative] =0 then '0'
+ELSEIF [Positive] =0 and [Negative] >0 then '-100' 
+ELSEIF ISNULL([Positive]) OR ISNULL([Negative]) then '0'
+END)
